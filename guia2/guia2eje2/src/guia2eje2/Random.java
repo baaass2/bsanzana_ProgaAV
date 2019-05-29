@@ -12,6 +12,9 @@ public class Random {
 		else if(opcion == 2) {
 			nrandom = (int) Math.floor(Math.random()*(4)+1);
 		}
+		else if(opcion == 3) {
+			nrandom = (int) Math.floor(Math.random()*(2)+1);
+		}
 
 		
 		return nrandom;

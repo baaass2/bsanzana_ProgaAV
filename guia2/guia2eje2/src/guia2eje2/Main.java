@@ -7,6 +7,7 @@ public class Main {
 		
 		Juego juego = new Juego();
 		juego.Setear_marcador();
+		juego.Setear_energia(2);
 		juego.Empezar();
 
 	}
