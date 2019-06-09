@@ -13,9 +13,7 @@ public class Nave {
 	private int puesto;
 	
 	
-	
-	
-	
+
 	
 	public String getDondeEsta() {
 		return dondeEsta;
@@ -85,8 +83,8 @@ public class Nave {
 		return matricula;
 	}
 
-	public void setMatricula(int matricula) {
-		this.matricula = matricula;
+	public void setMatricula(int nrand) {
+		this.matricula = nrand;
 	}
 
 }

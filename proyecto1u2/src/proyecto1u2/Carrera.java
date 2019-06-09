@@ -8,7 +8,7 @@ public class Carrera {
 
 	int nrand; // variable aux
 	String sng; // variable aux
-	int largoPista = 2000; //km
+	int largoPista = 1500; //km
 	int carreraEnd=0;
 	int puesto=0;
 		
@@ -18,16 +18,18 @@ public class Carrera {
 	Alas alas1 = new Alas();
 	Motor motor1 = new Motor();
 	Ambulancia ambulancia = new Ambulancia();
+	Animador animador1 = new Animador();
 
 	
 	Carrera(){
 
 			ensamblarNaves();
+			presentacionNaves();
 			while(carreraEnd != 1 ) {
 				calcularDegradacion();
 				revisarDegradacion();
 				carreraEnd = velocidadNaves();
-				mostrarParticipantes();
+				mostrarInformacion();
 				 try {
 		                Thread.sleep(5000);
 		            } catch (InterruptedException e) {
@@ -49,7 +51,7 @@ public class Carrera {
 			nrand = rand.randomizador(2);
 			sng = cbtible.tipoCombustible(nrand);
 			nave2.setCombustible(sng);
-			nrand = cbtible.velocidadInicial(sng);
+			nrand = (int) cbtible.velocidadInicial(sng);
 			nave2.setVel_actual(nrand);
 			nrand = rand.randomizador(2);
 			sng = mrial.tipoMaterial(nrand);
@@ -68,6 +70,22 @@ public class Carrera {
 	public void Incribirse(Nave nave) {
 		
 		naves.add(nave);
+	}
+	
+	
+	public void presentacionNaves() {
+		
+		System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
+		for (Nave i: naves) {
+			System.out.println("Nave: "+i.getMatricula());
+			System.out.println("tipo de Combustible: "+i.getCombustible());
+			System.out.println("Estado de motor: "+i.getEstadoMotor());
+			System.out.println("tipo de Alas: "+i.getTipo_alas());
+			System.out.println("% de Degradacion de Alas: " + i.getEstadoAlas());
+			System.out.println("Vel. actual: "+i.getVel_actual()+ " km/5s");
+			System.out.println("KmRecorridos: "+ i.getKmRecorridos());
+			System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
+		}
 	}
 	
 	public void calcularDegradacion() {
@@ -96,16 +114,26 @@ public class Carrera {
 	}
 	
 	public void revisarDegradacion() {
+
 		
 		int estadoAlas;
 		int estadoMotor;
-		int velocidad;
+		int matricula;
+		double velocidad;
+		double vel_actual;
+		double kmRecorridos;
 		String combustible;
-	
+		
 		for (Nave i: naves) {
+			
+			matricula = i.getMatricula();
+			kmRecorridos = i.getKmRecorridos();
+			vel_actual = i.getVel_actual();
+			combustible = i.getCombustible();
+			estadoAlas = i.getEstadoAlas();
+			
 			if(i.getPuesto() == 0 && i.getEstadoMotor() == 0) {
-				System.out.println("Nave: "+i.getMatricula());
-				combustible = i.getCombustible();
+				animador1.Locucion(1, matricula, combustible, vel_actual, kmRecorridos, estadoAlas);
 				i.setDondeEsta("Ambulancia");
 				estadoMotor = ambulancia.Reparacion("Motor");
 				i.setEstadoMotor(estadoMotor);
@@ -114,7 +142,7 @@ public class Carrera {
 				
 			}
 			if(i.getPuesto() == 0 && i.getEstadoAlas() <= 20) {
-				combustible = i.getCombustible();
+				animador1.Locucion(2, matricula, combustible, vel_actual, kmRecorridos, estadoAlas);
 				estadoAlas = ambulancia.Reparacion("Alas");
 				i.setDondeEsta("Ambulancia");
 				i.setEstadoAlas(estadoAlas);
@@ -165,22 +193,19 @@ public class Carrera {
 		return carreraEnd;
 	}
 	
-	public void mostrarParticipantes() {
+
+	public void mostrarInformacion() {
 		
 		for (Nave i: naves) { 
+			System.out.println("--------------------------------------");
 			if(i.getPuesto() == 0) {
-				System.out.println("--------------------------------------");
 				System.out.println("Nave: "+i.getMatricula());
-				System.out.println("tio de Combustible: "+i.getCombustible());
-				System.out.println("Esado moor: "+i.getEstadoMotor());
-				System.out.println("dd esa: "+i.getDondeEsta());
-				//System.out.println(i.getTipo_alas());
+				System.out.println("Estado motor: "+i.getEstadoMotor());
+				System.out.println("¿Donde esta?: "+i.getDondeEsta());
 				System.out.println("% de Degradacion de Alas: " + i.getEstadoAlas());
 				System.out.println("Vel_actual: "+i.getVel_actual()+ " km/5s");
 				System.out.println("KmRecorridos: "+ i.getKmRecorridos());
 				System.out.println("--------------------------------------");
-
-
 			}
 		}
 	}

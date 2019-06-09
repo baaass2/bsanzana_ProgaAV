@@ -36,7 +36,7 @@ public class Combustible {
 		return efecto;
 	}
 	
-	public int velocidadInicial (String combustible){
+	public double velocidadInicial (String combustible){
 		
 		if(combustible.equals("Nuclear")){
 			velocidad = 20;
