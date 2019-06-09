@@ -4,6 +4,7 @@ public class Combustible {
 	
 	String combustible;
 	double efecto;
+	int velocidad;
 
 	public String tipoCombustible (int opcion) {
 		
@@ -24,15 +25,31 @@ public class Combustible {
 		if(combustible.equals("Nuclear")){
 			efecto = (vel_actual*(0.5));
 		}
-		else if(combustible.equals("Biodisel")) {
+		else if(combustible.equals("Disel")) {
 			efecto = (vel_actual*(0.25));
 
 		}
-		else if(combustible.equals("Disel")) {
+		else if(combustible.equals("Biodisel")) {
 			efecto = (vel_actual*(0.10));
 
 		}
 		return efecto;
+	}
+	
+	public int velocidadInicial (String combustible){
+		
+		if(combustible.equals("Nuclear")){
+			velocidad = 20;
+		}
+		else if(combustible.equals("Disel")) {
+			velocidad = 10;
+
+		}
+		else if(combustible.equals("Biodisel")) {
+			velocidad = 5;
+
+		}
+		return velocidad;
 	}
 
 }

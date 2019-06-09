@@ -7,12 +7,32 @@ public class Nave {
 	private double kmRecorridos;
 	private String combustible;
 	private String tipo_alas;
+	private String dondeEsta;
 	private int estadoAlas; // porcentaje de degradacion 
+	private int estadoMotor; // porcentaje de degradacion 
 	private int puesto;
 	
 	
 	
 	
+	
+	
+	public String getDondeEsta() {
+		return dondeEsta;
+	}
+
+	public void setDondeEsta(String dondeEsta) {
+		this.dondeEsta = dondeEsta;
+	}
+
+	public int getEstadoMotor() {
+		return estadoMotor;
+	}
+
+	public void setEstadoMotor(int estadoMotor) {
+		this.estadoMotor = estadoMotor;
+	}
+
 	public int getEstadoAlas() {
 		return estadoAlas;
 	}
