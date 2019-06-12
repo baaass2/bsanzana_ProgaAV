@@ -3,6 +3,7 @@ package proyecto22;
 public class Odometro {
 	
 	private double vel_actual;
+	private double Aceleracion;
 	private double kmRecorridos;
 	
 	
@@ -26,6 +27,26 @@ public class Odometro {
 		
 		return kmRecorridos_final;
 	}
+	
+	public double calcularAceleracion (double velocidad_final, double velocidad_inicial) {
+		
+		double aceleracion;
+		
+		
+		
+		return aceleracion;
+		
+	}
+	
+	
+	public double getAceleracion() {
+		return Aceleracion;
+	}
+
+	public void setAceleracion(double aceleracion) {
+		this.Aceleracion = aceleracion;
+	}
+
 	public double getVel_actual() {
 		return vel_actual;
 	}

@@ -145,18 +145,29 @@ public class Carrera {
 	
 	public void mostrarInformacion() {
 		
-		System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
+		String estadoAlas = " ";
+		String saludMotor = " ";
+		String matricula = " ";
+		String velocidad = " ";
+		String recorrido = " ";
+		
 		for (Nave i: naves) {
-			if(i.getPuestoCarrera() == 0) {
-				System.out.println("Nave: "+i.getMatricula());
-				System.out.println("Salud Motor: "+i.getMotor().getSaludMotor());
-				System.out.println("% Degradacion en Alas: "+ i.getAlas().getEstadoAlas());
-				System.out.println("Vel_actual: "+i.getOd().getVel_actual());
-				System.out.println("Recorrido: "+i.getOd().getKmRecorridos());
-				System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
-
-			}
+			matricula= matricula + i.getMatricula()+ "     ";
+			saludMotor= saludMotor + i.getMotor().getSaludMotor()+ "     ";
+			estadoAlas= estadoAlas + i.getAlas().getEstadoAlas()+ "     ";
+			velocidad= velocidad + i.getOd().getVel_actual()+ "     ";
+			recorrido= recorrido + i.getOd().getKmRecorridos()+ "     ";
 		}
+		System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
+
+		System.out.println("Nave: "+matricula);
+		System.out.println("Salud Motor: "+saludMotor);
+		System.out.println("% Degradacion en Alas: "+estadoAlas);
+		System.out.println("Vel_actual: "+velocidad);
+		System.out.println("Recorrido: "+recorrido);
+
+		System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
+
 	}
 	
 	public void volver_aCarrera() {
