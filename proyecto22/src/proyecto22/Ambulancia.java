@@ -2,6 +2,7 @@ package proyecto22;
 
 public class Ambulancia {
 	
+	private String dondeEsta;
 	
 	public int reparacionAlas(int estadoAlas, int matricula) {
 		int estadoAlas_final=estadoAlas;
@@ -24,5 +25,15 @@ public class Ambulancia {
 		
 		return saludMotor_final;
 	}
+
+	public String getDondeEsta() {
+		return dondeEsta;
+	}
+
+	public void setDondeEsta(String dondeEsta) {
+		this.dondeEsta = dondeEsta;
+	}
+	
+	
 
 }

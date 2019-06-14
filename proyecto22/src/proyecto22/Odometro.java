@@ -32,6 +32,10 @@ public class Odometro {
 		
 		double aceleracion;
 		
+		aceleracion = velocidad_final - velocidad_inicial;
+		if(aceleracion < 0) {
+			aceleracion = aceleracion * -1;
+		}
 		
 		
 		return aceleracion;
