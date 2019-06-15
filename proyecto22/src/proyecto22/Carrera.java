@@ -4,13 +4,12 @@ import java.util.ArrayList;
 public class Carrera {
 	
 	private ArrayList<Nave> naves = new ArrayList();
-	public int largoPista = 1000;
 	public int puestoCarrera = 0;
 	
-	Random rand = new Random();
-	Ambulancia ambulancia = new Ambulancia ();
-	
 	Carrera(){
+		Ambulancia ambulancia = new Ambulancia ();
+		Pista pista = new Pista();
+		
 		ensamblarNaves();
 		presentacionNaves();
 		
@@ -76,26 +75,27 @@ public class Carrera {
 					kmRecorridos_final = i.getOd().calcularRecorrido(velocidad_final, kmRecorridos);
 					i.getOd().setKmRecorridos(kmRecorridos_final);
 					//REVISAR SI PASO LA META
-					if(kmRecorridos_final >= largoPista) {
+					if(kmRecorridos_final >= pista.getLargoPista()) {
 						puestoCarrera = puestoCarrera + 1;
 						i.setPuestoCarrera(puestoCarrera);
+						System.out.println("LA NAVE: "+i.getMatricula()+" HA LLEGADO A LA META");
 					}
 					
 					//CALCULAR DEGRADACIONES ELEMENTOS (ALAS Y MOTOR)
 					
-					estadoAlas_final = i.calcularDegradacionAlas(velocidad, tipoAlas, estadoAlas);
+					estadoAlas_final = i.calcularDegradacionAlas(velocidad_final, tipoAlas, estadoAlas);
 					i.getAlas().setEstadoAlas(estadoAlas_final);
 					
-					saludMotor_final= i.calcularSaludMotor(velocidad, tipoCombustible, saludMotor);
+					saludMotor_final= i.calcularSaludMotor(velocidad_final, tipoCombustible, saludMotor);
 					i.getMotor().setSaludMotor(saludMotor_final);
 
 				}
 			}
-			//try {
-             //   Thread.sleep(5000);
-            //} catch (InterruptedException e) {
-             //   e.printStackTrace();
-           // }
+			try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 			mostrarInformacion();
 			volver_aCarrera();
 		}
@@ -110,14 +110,14 @@ public class Carrera {
 		
 		for(int i=0; i<4; i++) {
 			Nave nave1 = new Nave();
-			nrand = rand.randomizador(1);
+			nrand = randomizador(1);
 			nave1.setMatricula(nrand);
 			nave1.setPuestoCarrera(0);
 			nave1.setDondeEsta("Carrera");
-			nrand = rand.randomizador(2);
-			material = rand.tipoMaterial(nrand);
-			nrand = rand.randomizador(2);
-			combustible = rand.tipoCombustible(nrand);
+			nrand = randomizador(2);
+			material = tipoMaterial(nrand);
+			nrand = randomizador(2);
+			combustible = tipoCombustible(nrand);
 			nave1.getMotor().setTipoCombustible(combustible);
 			velocidad = nave1.getMotor().velocidadInicial(combustible);
 			nave1.getOd().setVel_actual(velocidad);
@@ -164,7 +164,7 @@ public class Carrera {
 		System.out.println("Tipo de Combustible    "+t_combustible);
 		System.out.println("Salud Motor:           "+saludMotor);
 		System.out.println("% Degradacion en Alas: "+estadoAlas);
-		System.out.println("Vel de arranque m/5s:  "+velocidad);
+		System.out.println("Vel de arranque km/5s:  "+velocidad);
 		System.out.println("Aceleracion:           "+aceleracion);
 		System.out.println("Recorrido:             "+recorrido);
 
@@ -174,29 +174,29 @@ public class Carrera {
 	
 	public void mostrarInformacion() {
 		
-		String estadoAlas = " ";
-		String saludMotor = " ";
-		String matricula = " ";
-		String velocidad = " ";
-		String aceleracion = " ";
-		String recorrido = " ";
+		String estadoAlas = "";
+		String saludMotor = "";
+		String matricula = "";
+		String velocidad = "";
+		String aceleracion = "";
+		String recorrido = "";
 		
+		System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
+
 		for (Nave i: naves) {
 			matricula= matricula + i.getMatricula()+ "     ";
 			saludMotor= saludMotor + i.getMotor().getSaludMotor()+ "          ";
 			estadoAlas= estadoAlas + i.getAlas().getEstadoAlas()+ "          ";
-			velocidad= velocidad + i.getOd().getVel_actual()+ "     ";
-			aceleracion= aceleracion + i.getOd().getAceleracion()+ "     ";
-			recorrido= recorrido + i.getOd().getKmRecorridos()+ "     ";
+			velocidad= velocidad + i.getOd().getVel_actual()+ "          ";
+			aceleracion= aceleracion + i.getOd().getAceleracion()+ "          ";
+			recorrido= recorrido + i.getOd().getKmRecorridos()+ "          ";
 		}
-		System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
-
-		System.out.println("Nave:                       "+matricula);
-		System.out.println("Salud Motor:                "+saludMotor);
-		System.out.println("% Degradacion en Alas:      "+estadoAlas);
-		System.out.println("Vel_actual m/5s:            "+velocidad);
-		System.out.println("Aceleracion:                "+aceleracion);
-		System.out.println("Recorrido:                  "+recorrido);
+		System.out.println("Nave:                  "+matricula);
+		System.out.println("Salud Motor:           "+saludMotor);
+		System.out.println("% Degradacion en Alas: "+estadoAlas);
+		System.out.println("Vel_actual km/5s:      "+velocidad);
+		System.out.println("Aceleracion:           "+aceleracion);
+		System.out.println("Recorrido:             "+recorrido);
 
 		System.out.println("船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛船赛");
 
@@ -235,6 +235,52 @@ public class Carrera {
 		System.out.println("木木木木木木木木木木木木木木木木木木木木木木木木");
 
 	}
+	
+	public int randomizador(int opcion) {
+		int nrandom = 1;
+		
+		if(opcion == 1) {
+			nrandom = (int) Math.floor(Math.random()*(10000000)+1000000);
+		}
+		else if(opcion == 2) {
+			nrandom = (int) Math.floor(Math.random()*(3)+1);
+		}
+		else if(opcion == 3) {
+			nrandom = (int) Math.floor(Math.random()*(2)+1);
+		}	
+		return nrandom;	
+	}
+	
+	public String tipoMaterial (int opcion) {
+		String material = null;
+		if(opcion == 1) {
+			material = "Plastico";
+		}
+		else if(opcion == 2) {
+			material = "Madera";
+		}
+		else if(opcion == 3) {
+			material = "Metal";
+		}
+		return material;
+	}
+	
+	public String tipoCombustible (int opcion) {
+		String combustible = null;
+		if(opcion == 1) {
+			combustible = "Biodisel";
+		}
+		else if(opcion == 2) {
+			combustible = "Nuclear";
+		}
+		else if(opcion == 3) {
+			combustible = "Disel";
+		}
+		return combustible;
+	}
+	
+	
+	
 	
 
 }
