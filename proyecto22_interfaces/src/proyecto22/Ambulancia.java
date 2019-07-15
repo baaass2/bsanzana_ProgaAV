@@ -8,7 +8,7 @@ public class Ambulancia {
 		int estadoAlas_final=estadoAlas;
 		
 		if(estadoAlas <= 20) {
-			System.out.println("ESTA EN LA AMBULANCIA LA NAVE: " +matricula);
+			System.out.println("Esta en la ambuluancia, la nave: " +matricula);
 			estadoAlas_final = 100;
 		}
 		
@@ -19,7 +19,7 @@ public class Ambulancia {
 		int saludMotor_final = saludMotor;
 		
 		if(saludMotor <= 20) {
-			System.out.println("ESTA EN LA AMBULANCIA LA NAVE: " +matricula);
+			System.out.println("Esta en la ambuluancia, la nave: " +matricula);
 			saludMotor_final = 100;
 		}
 		

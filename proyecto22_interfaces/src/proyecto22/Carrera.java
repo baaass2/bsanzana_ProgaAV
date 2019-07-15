@@ -5,6 +5,7 @@ public class Carrera {
 	
 	private ArrayList<Nave> naves = new ArrayList();
 	public int puestoCarrera = 0;
+	public int tiempo = 0;
 	
 	Carrera(){
 		Ambulancia ambulancia = new Ambulancia ();
@@ -32,7 +33,7 @@ public class Carrera {
 				saludMotor_reparado = ambulancia.reparacionMotor(saludMotor, matricula);
 				i.getMotor().setSaludMotor(saludMotor_reparado);
 	
-				//ESTO QUIERE DECIR QUE SE HIZO REPARACION POR ENDE LA VELOCIDAD PARTE DE 0.
+				//ESTO QUIERE DECIR QUE SE HIZO REPARACION, POR ENDE LA VELOCIDAD PARTE DE 0.
 				if(estadoAlas != estadoAlas_reparado ) {
 					i.setDondeEsta("Ambulancia");
 					i.getOd().setVel_actual(0);
@@ -81,7 +82,7 @@ public class Carrera {
 					if(kmRecorridos_final >= pista.getLargoPista()) {
 						puestoCarrera = puestoCarrera + 1;
 						i.setPuestoCarrera(puestoCarrera);
-						System.out.println("LA NAVE: "+i.getMatricula()+" HA LLEGADO A LA META");
+						System.out.println("La nave "+i.getMatricula()+" Ha llegado a la meta.");
 					}
 					
 					//CALCULAR DEGRADACIONES ELEMENTOS (ALAS Y MOTOR)
@@ -94,11 +95,15 @@ public class Carrera {
 					locutor.recibirInformacion(naves);
 				}
 			}
-			//try {
-                //Thread.sleep(5000);
-            //} catch (InterruptedException e) {
-                //e.printStackTrace();
-            //}
+			try {
+                Thread.sleep(5000);
+                tiempo = 5 + tiempo;
+                System.out.println("Tiempo "+tiempo);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+			locutor.Locucion(tiempo);
+
 			volver_aCarrera();
 		}
 		premiacion();

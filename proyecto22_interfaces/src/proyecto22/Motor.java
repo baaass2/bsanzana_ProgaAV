@@ -13,11 +13,11 @@ public class Motor {
 			efecto = (velocidad*(0.5));
 		}
 		else if(tipoCombustible.equals("Disel")) {
-			efecto = (velocidad*(0.25));
+			efecto = (velocidad*(0.4));
 
 		}
 		else if(tipoCombustible.equals("Biodisel")) {
-			efecto = (velocidad*(0.10));
+			efecto = (velocidad*(0.3));
 
 		}
 		return efecto;
@@ -30,11 +30,11 @@ public class Motor {
 			velocidad = 20;
 		}
 		else if(combustible.equals("Disel")) {
-			velocidad = 10;
+			velocidad = 19;
 
 		}
 		else if(combustible.equals("Biodisel")) {
-			velocidad = 5;
+			velocidad = 18;
 		}
 		else {
 			velocidad = 0;
