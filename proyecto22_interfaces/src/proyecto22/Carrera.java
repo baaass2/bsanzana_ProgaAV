@@ -98,7 +98,6 @@ public class Carrera {
 			try {
                 Thread.sleep(5000);
                 tiempo = 5 + tiempo;
-                System.out.println("Tiempo "+tiempo);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -106,7 +105,7 @@ public class Carrera {
 
 			volver_aCarrera();
 		}
-		premiacion();
+		locutor.premiacion();
 	}
 
 	public void ensamblarNaves() {
@@ -200,23 +199,7 @@ public class Carrera {
 					i.getOd().setVel_actual(velocidad);
 			}
 		}
-	}
-	
-	public void premiacion() {
-		System.out.println("木木木木木木木木木木木木木木木木木木木木木木木木");
-
-		for (Nave i: naves) {
-			if(i.getPuestoCarrera() == 1) {
-				System.out.println("Primer lugar Nave: "+i.getMatricula());
-			}
-			else if(i.getPuestoCarrera() == 2) {
-				System.out.println("Segundo lugar Nave: "+i.getMatricula());				
-			}
-		}
-		System.out.println("木木木木木木木木木木木木木木木木木木木木木木木木");
-
-	}
-	
+	}	
 	public int randomizador(int opcion) {
 		int nrandom = 1;
 		

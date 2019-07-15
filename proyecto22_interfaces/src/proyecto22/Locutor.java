@@ -52,9 +52,13 @@ public class Locutor {
 					
 					System.out.println("Locutor: Comienza la partida y las naves van a la misma distancia del punto de partida");
 				}
-				if (diferenciaRecorrido > -1 && diferenciaRecorrido < 1) {
-					System.out.println("Locutor: Es una diferencia de solo metros!!" );
-				}
+				if (diferenciaRecorrido > -10 && diferenciaRecorrido < 10) {
+					if(diferenciaRecorrido != 0) {
+					System.out.println("Locutor: Es una diferencia de poco kilometros!!" );
+					}
+				}		
+				System.out.println("Estas son las distancias "+arrayRecorrido[0]+" y "+arrayRecorrido[1]+" de las naves "
+						+ ""+ arrayMatricula[0]+" y "+arrayMatricula[1]+ " respectivamente.");
 			}
 			
 			else if(tiempo <= 10) {
@@ -100,6 +104,37 @@ public class Locutor {
 					System.out.println("Locutor: Las naves van a la misma distancia.");
 				}
 			}
+
+			else if(tiempo <= 30) {
+				if(diferenciaVelocidad > 0) {
+					System.out.println("Locutor: La nave "+arrayMatricula[1]+" va con una desventaja de velocidad.");
+				}
+				else if (diferenciaVelocidad < 0){
+					System.out.println("Locutor: La nave "+arrayMatricula[0]+" va con una desventaja de velocidad.");
+				}
+				else if(diferenciaVelocidad == 0){
+					
+					System.out.println("Locutor: las naves van a la misma velocidad");
+				}
+			}
+			else if(tiempo <= 40) {
+				System.out.println("Las naves "+arrayMatricula[0]+" y "+arrayMatricula[1]+" les falta para llegar a la meta "
+						+ distanciaMetaN0+"km"+ " y "+distanciaMetaN1+"km"+ " respectivamente.");
+			}
+			
+			else if (tiempo <=50) {
+				if(diferenciaRecorrido > 0) {
+					System.out.println("Locutor: La nave "+arrayMatricula[1]+" va con una desventaja de "+diferenciaRecorrido+"km.");
+				}
+				else if (diferenciaRecorrido < 0){
+					System.out.println("Locutor: La nave "+arrayMatricula[0]+" va con una desventaja de "+(-1*diferenciaRecorrido)+"km.");
+				}
+				else if(diferenciaRecorrido == 0){
+					System.out.println("Locutor: Las naves van a la misma distancia.");
+				}
+			}
+			
+			
 			else if(tiempo >= 60) {
 				System.out.println("Todavia no hay ganadores pero estamos en los últimos kilometros, es una carrera reñida.");
 			}
@@ -128,6 +163,25 @@ public class Locutor {
 				}
 			}
 		}
+	}
+	
+	public void premiacion() {
+		System.out.println("木木木木木木木木木木木木木木木木木木木木木木木木");
+		
+		if (arrayRecorrido[0] != arrayRecorrido[1]) {
+			if(arrayPuesto[0] == 1) {
+				System.out.println("Primer lugar Nave: "+arrayMatricula[0]);
+				System.out.println("Segundo lugar Nave: "+arrayMatricula[1]);				
+			}
+			else if(arrayPuesto[1] == 1) {
+				System.out.println("Primer lugar Nave: "+arrayMatricula[1]);
+				System.out.println("Segundo lugar Nave: "+arrayMatricula[0]);				
+			}
+		}
+		else if (arrayRecorrido[0] == arrayRecorrido[1]) {
+			System.out.println("Locutor: !WOWOWO! HUBO UN INCREIBLE EMPATE");
+		}
+		System.out.println("木木木木木木木木木木木木木木木木木木木木木木木木");
 	}
 
 }
